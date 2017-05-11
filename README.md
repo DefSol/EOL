@@ -25,7 +25,7 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-*.md text = eol=lf
+*.md text eol=lf
 
 # Declare files that will always have CRLF line endings on checkout.
 *.sln text eol=crlf
