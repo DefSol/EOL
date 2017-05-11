@@ -21,7 +21,7 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 2. Adding a .gitattributes file in the root of the repo with the following settings
 ```
 # Set the default behavior, in case people don't have core.autocrlf set.
-* text=auto
+* text=eol=lf
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
