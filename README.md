@@ -37,4 +37,4 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
-Making the changes to the git attributes file, we then look to see if any changes have been made to the readme file and License files. Then add a new md file called Experiment 2 and check the EOL | The exisitng files will remain unchanged, but the EOL on the new file hould be LF |
+Making the changes to the git attributes file, we then look to see if any changes have been made to the readme file and License files. Then add a new md file called Experiment 2 and check the EOL | The exisitng files will remain unchanged, but the EOL on the new file hould be LF | All files were CRLF, which differs from the theory. It sems the .gitattributes file did not reflect changes to the config
