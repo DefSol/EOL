@@ -21,11 +21,11 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 2. Adding a .gitattributes file in the root of the repo with the following settings
 ```
 # Set the default behavior, in case people don't have core.autocrlf set.
-* text=eol=lf
+* text=auto
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-*.md text
+*.md text = eol=lf
 
 # Declare files that will always have CRLF line endings on checkout.
 *.sln text eol=crlf
@@ -35,11 +35,7 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 *.jpg binary
 ```
 
-**Method**|**Prediction**|**Outcome**
--|-|-|
-Making the changes to the git attributes file, we then look to see if any changes have been made to the readme file and License files. Then add a new md file called Experiment 2 and check the EOL | The exisitng files will remain unchanged, but the EOL on the new file hould be LF | All files were CRLF, which differs from the theory. It seems the .gitattributes file did not reflect changes to the config
-
-Further to this, if the .git attributes file is not the first file added to the repo, then the repo needs to be re-indexed, by doing the following
+then see if we can reset the EOL by doing the following
 
 ```
  rm .git/index     # Remove the index to force Git to
@@ -49,7 +45,9 @@ $ git add -u
 $ git commit -m "Introduce end-of-line normalization"
 ```
 
-
 **Method**|**Prediction**|**Outcome**
 -|-|-|
-In the experiment2 repo, run the reindex and then check all 3 files. Add a new file | The EOL should be LF for the existing and new file | 
+Making the changes to the git attributes file, then run the re indexing to see if files change their EOL | After the reindex all file should need to be re added to the staging area, with the only change being the EOL |
+
+
+ 
