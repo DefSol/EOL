@@ -16,4 +16,4 @@ I'm a new contributor on a team whom are primarilty Mac and Ubuntu Desktop. One 
 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
-Add a file via the web interface on GH to see default EOL. Opening file locally in windows with standart git config i.e. `core.autocrlf = true` | After cloning the repo and branch will see the EOL for this file are windows specific `/n /r` or `CRLF` |
+Add a file via the web interface on GH to see default EOL. Opening file locally in windows with standart git config i.e. `core.autocrlf = true` | After cloning the repo and branch will see the EOL for this file are windows specific `/n /r` or `CRLF` | Both the readme.md and the License file both had windows EOL
