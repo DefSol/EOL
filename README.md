@@ -37,4 +37,19 @@ Add a file via the web interface on GH to see default EOL. Opening file locally 
 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
-Making the changes to the git attributes file, we then look to see if any changes have been made to the readme file and License files. Then add a new md file called Experiment 2 and check the EOL | The exisitng files will remain unchanged, but the EOL on the new file hould be LF | All files were CRLF, which differs from the theory. It sems the .gitattributes file did not reflect changes to the config
+Making the changes to the git attributes file, we then look to see if any changes have been made to the readme file and License files. Then add a new md file called Experiment 2 and check the EOL | The exisitng files will remain unchanged, but the EOL on the new file hould be LF | All files were CRLF, which differs from the theory. It seems the .gitattributes file did not reflect changes to the config
+
+Further to this, if the .git attributes file is not the first file added to the repo, then the repo needs to be re-indexed, by doing the following
+
+```
+ rm .git/index     # Remove the index to force Git to
+$ git reset         # re-scan the working directory
+$ git status        # Show files that will be normalized
+$ git add -u
+$ git commit -m "Introduce end-of-line normalization"
+```
+
+
+**Method**|**Prediction**|**Outcome**
+-|-|-|
+In the experiment2 repo, run the reindex and then check all 3 files. Add a new file | The EOL should be LF for the existing and new file | 
