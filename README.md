@@ -47,7 +47,7 @@ $ git commit -m "Introduce end-of-line normalization"
 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
-Making the changes to the git attributes file, then run the re indexing to see if files change their EOL. The setting for `core.autocrlf = true` | After the reindex all file should need to be re added to the staging area, with the only change being the EOL |
+Making the changes to the git attributes file, then run the re indexing to see if files change their EOL. The setting for `core.autocrlf = true` | After the reindex all file should need to be re added to the staging area, with the only change being the EOL | No files were changed and EOL remained the same. Also new files had EOL `crlf`
 
 
  
