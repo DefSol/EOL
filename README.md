@@ -77,4 +77,4 @@ Make the following changes to the .gitattributes file
  
  **Method**|**Prediction**|**Outcome**
 -|-|-|
-Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir |
+Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir | Files were converted to `lf` when commiting to the index, but EOL for the files in the working directory remained EOL `rlf`
