@@ -57,10 +57,24 @@ A change to the attirbutes file was made as below
 
 # Denote all files that are truly binary and should not be modified.
 *.png binary
-*.jpg bi
+*.jpg binary
  ```
 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
 Make a change to the .gitattributes file as above. Re-run the re-index and see the outcome | That the files wil have EOL `crlf` | This was the outcome, but this also converted files with `lf` to `crlf` and stated the following message `warning: LF will be replaced by CRLF in README.md. The file will have its original line endings in your working directory.`
  
+
+Make the following changes to the .gitattributes file
+```
+# Set the default behavior, in case people don't have core.autocrlf set.
+*    text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+ ```
+ 
+ **Method**|**Prediction**|**Outcome**
+-|-|-|
+Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir |
