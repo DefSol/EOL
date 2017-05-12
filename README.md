@@ -49,5 +49,18 @@ $ git commit -m "Introduce end-of-line normalization"
 -|-|-|
 Making the changes to the git attributes file, then run the re indexing to see if files change their EOL. The setting for `core.autocrlf = true` | After the reindex all file should need to be re added to the staging area, with the only change being the EOL | No files were changed and EOL remained the same. Also new files had EOL `crlf`
 
+A change to the attirbutes file was made as below
 
+```
+# Set the default behavior, in case people don't have core.autocrlf set.
+*    text=auto
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg bi
+ ```
+
+**Method**|**Prediction**|**Outcome**
+-|-|-|
+Make a change to the .gitattributes file as above. Re-run the re-index and see the outcome | That the files wil have EOL `crlf` | This was the outcome, but this also converted files with `lf` to `crlf` and stated the following message `warning: LF will be replaced by CRLF in README.md. The file will have its original line endings in your working directory.`
  
