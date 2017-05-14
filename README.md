@@ -84,3 +84,10 @@ Make all files in working dir EOL `lf` with some tool/script/text editor
  **Method**|**Prediction**|**Outcome**
 -|-|-|
 With the same .gitattributes file , i.e. `* text=auto eol=lf` set all the files in the working dir to EOL `lf` and commit changes.| Any files note created in windows should have original EOL `lf`, and any ones created on windows system should be `lf` as well. So all file in working dir and dB should be EOL `lf` for current and new branch | the working dir staed EOL `lf` and any new branch stayed `lf` as well.
+
+## Conclusions
+So, it seems that the biggest lesson is the difference between the working dir and the git dB. it seems the .gitattributes file will help preserve EOL from the repo, but any new files created on a windows system (or any other that does not use EOL `lf` will need to have that changed in the working dir.
+
+EOL should be a solves problem, but it is not, and have a mechanism to deal with this is highly reccomended. As I found there is a lot of dark magic between teh .gitattributes file,config settings and test editors of choice. Please feel free to use the experiments in this repo to further your understanding what solution may work best for you.
+
+If you have any differences in you outcomes, please send a PR
