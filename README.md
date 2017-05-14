@@ -78,3 +78,9 @@ Make the following changes to the .gitattributes file
  **Method**|**Prediction**|**Outcome**
 -|-|-|
 Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir | Files created with EOL `lf` were modified in the working dir to be `lf`. Those created in windows with EOL `crlf` were note modifed in the working directory. It seems that EOL are converted in the git dB, but are left unchanged in the working dir
+
+Make all files in working dir EOL `lf` with some tool/script/text editor 
+
+ **Method**|**Prediction**|**Outcome**
+-|-|-|
+With the same .gitattributes file , i.e. `* text=auto eol=lf` set all the files in the working dir to EOL `lf` and commit changes.| Any files note created in windows should have original EOL `lf`, and any ones created on windows system should be `lf` as well. So all file in working dir and dB should be EOL `lf` for current and new branch
