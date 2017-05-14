@@ -68,7 +68,7 @@ Make a change to the .gitattributes file as above. Re-run the re-index and see t
 Make the following changes to the .gitattributes file
 ```
 # Set the default behavior, in case people don't have core.autocrlf set.
-*    text eol=lf
+*    text=auto eol=lf
 
 # Denote all files that are truly binary and should not be modified.
 *.png binary
@@ -77,4 +77,4 @@ Make the following changes to the .gitattributes file
  
  **Method**|**Prediction**|**Outcome**
 -|-|-|
-Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir | Files were converted to `lf` when commiting to the index, but EOL for the files in the working directory remained EOL `rlf`
+Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir | Files created with EOL `lf` were modified in the working dir to be `lf`. Those created in windows with EOL `crlf` were note modifed in the working directory. It seems that EOL are converted in the git dB, but are left unchanged in the working dir
