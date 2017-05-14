@@ -88,6 +88,6 @@ With the same .gitattributes file , i.e. `* text=auto eol=lf` set all the files 
 ## Conclusions
 So, it seems that the biggest lesson is the difference between the working dir and the git dB. it seems the .gitattributes file will help preserve EOL from the repo, but any new files created on a windows system (or any other that does not use EOL `lf` will need to have that changed in the working dir.
 
-EOL should be a solves problem, but it is not, and have a mechanism to deal with this is highly reccomended. As I found there is a lot of dark magic between teh .gitattributes file,config settings and test editors of choice. Please feel free to use the experiments in this repo to further your understanding what solution may work best for you.
+EOL should be a solved problem, but it is not, and havin a mechanism/agreement/contract to deal with this is highly reccomended. As I found, there is a lot of dark magic between the .gitattributes file,config settings and test editors of choice. Please feel free to use the experiments in this repo to further your understanding what solution may work best for you.
 
 If you have any differences in you outcomes, please send a PR
