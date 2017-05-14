@@ -17,3 +17,70 @@ I'm a new contributor on a team whom are primarilty Mac and Ubuntu Desktop. One 
 **Method**|**Prediction**|**Outcome**
 -|-|-|
 Add a file via the web interface on GH to see default EOL. Opening file locally in windows with standart git config i.e. `core.autocrlf = true` | After cloning the repo and branch will see the EOL for this file are windows specific `/n /r` or `CRLF` | Both the readme.md and the License file both had windows EOL
+
+2. Adding a .gitattributes file in the root of the repo with the following settings
+```
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.md text eol=lf
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+```
+
+then see if we can reset the EOL by doing the following
+
+```
+ rm .git/index     # Remove the index to force Git to
+$ git reset         # re-scan the working directory
+$ git status        # Show files that will be normalized
+$ git add -u
+$ git commit -m "Introduce end-of-line normalization"
+```
+
+**Method**|**Prediction**|**Outcome**
+-|-|-|
+Making the changes to the git attributes file, then run the re indexing to see if files change their EOL. The setting for `core.autocrlf = true` | After the reindex all file should need to be re added to the staging area, with the only change being the EOL | No files were changed and EOL remained the same. Also new files had EOL `crlf`
+
+A change to the attirbutes file was made as below
+
+```
+# Set the default behavior, in case people don't have core.autocrlf set.
+*    text=auto
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+ ```
+
+**Method**|**Prediction**|**Outcome**
+-|-|-|
+Make a change to the .gitattributes file as above. Re-run the re-index and see the outcome | That the files wil have EOL `crlf` | This was the outcome, but this also converted files with `lf` to `crlf` and stated the following message `warning: LF will be replaced by CRLF in README.md. The file will have its original line endings in your working directory.`
+ 
+
+Make the following changes to the .gitattributes file
+```
+# Set the default behavior, in case people don't have core.autocrlf set.
+*    text=auto eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+ ```
+ 
+ **Method**|**Prediction**|**Outcome**
+-|-|-|
+Make the above changes to the .gitattributes file and commit. Then reset the git index | All files should be converted to EOL lf in both the index and working dir | Files created with EOL `lf` were modified in the working dir to be `lf`. Those created in windows with EOL `crlf` were note modifed in the working directory. It seems that EOL are converted in the git dB, but are left unchanged in the working dir
+
+Make all files in working dir EOL `lf` with some tool/script/text editor 
+
+ **Method**|**Prediction**|**Outcome**
+-|-|-|
+With the same .gitattributes file , i.e. `* text=auto eol=lf` set all the files in the working dir to EOL `lf` and commit changes.| Any files note created in windows should have original EOL `lf`, and any ones created on windows system should be `lf` as well. So all file in working dir and dB should be EOL `lf` for current and new branch | the working dir staed EOL `lf` and any new branch stayed `lf` as well.
