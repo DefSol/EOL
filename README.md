@@ -91,3 +91,4 @@ So, it seems that the biggest lesson is the difference between the working dir a
 EOL should be a solved problem, but it is not, and havin a mechanism/agreement/contract to deal with this is highly reccomended. As I found, there is a lot of dark magic between the .gitattributes file,config settings and test editors of choice. Please feel free to use the experiments in this repo to further your understanding what solution may work best for you.
 
 If you have any differences in you outcomes, please send a PR
+
